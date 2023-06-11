@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            margin:0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 50px;
+            
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        h6 {
+            color: #666;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            padding: 1px;
+            margin:2px;
+           width: 15rem;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        footer{
+            text-align:center;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            border:3px solid black;
+            width:20%;
+            margin-left: 40%;
+            background-color: antiquewhite;
+        }
+
+        .inp{
+            width: 100%;
+            
+            display:flex;
+            flex-direction: column;
+            
+        }
+
+        .ana{
+            width: 100%;
+            height: 100%;
+            border: 5px dashed black;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJE</title>
+
+    <script>
+        var tcdiz=["11223344556","12345665432","98765567892","13579975311"];
+        var addiz=["Aslı","Mehmet","Derya","Sedat"];
+        var soyaddiz=["KARA", "UZUN", "DEMİR","SERT"];
+        var emaildiz=["aslikara@msn.com","muzun@google.com.tr","demirderya@yahoo.com","sedatsert@hotmail.com"];
+        var telefondiz = ["532 544 89 99","505 325 44 70","537 888 23 00","541 777 54 29"];
+        var bolumdiz= ["Bilgisayar", "Makina","YBS","Tıp"];
+        var dyeridiz=["İstanbul","Artvin", "Aydın","Denizli"];
+        var vizediz=[100,50,75,90];
+        var finaldiz=[100,50,70,90];
+
+        function tumOgrencileriGetir(){
+       
+            var ogrenciler=document.getElementById("ogrenciler");
+            ogrenciler.innerHTML = ""; 
+
+            for (var k=0; k<tcdiz.length;k++){
+                var notOrtalamasi=((vizediz[k]*40/100)+(finaldiz[k]*60/100));
+                var durum="";
+
+                if (notOrtalamasi>=50){
+                    durum="GEÇTİNİZ";
+
+                }
+                else{
+                    durum="KALDINIZ";
+                }
+
+                var hepsi = 
+
+                            "TC Kimlik No: " + tcdiz[k] + "<br>" +
+                            "Adı: " + addiz[k] + "<br>" +
+                            "Soyadı: " + soyaddiz[k] + "<br>" +
+                            "E-mail: " + emaildiz[k] + "<br>" +
+                            "Telefon: " + telefondiz[k] + "<br>" +
+                            "Bölüm: " + bolumdiz[k] + "<br>" +
+                            "Doğum Yeri: " + dyeridiz[k] + "<br>" +
+                            "Not Ortalaması: " + notOrtalamasi.toFixed(2) + "<br>" +
+                            "Durum: " + durum + "<br><br>";
+
+                            
+                ogrenciler.innerHTML+=hepsi;
+            }
+        }
+
+        function ogrenciGetir() {
+            var tcKimlikNo = document.getElementById("tcKimlikNo").value;
+            var ogrenciBilgisi = document.getElementById("ogrenciBilgisi");
+            ogrbilgii.innerHTML = ""; 
+
+            var sorgu=tcdiz.indexOf(tcKimlikNo); 
+            if (sorgu!==-1){
+                var ortalama=((vizediz[sorgu]*40/100)+(finaldiz[sorgu]*60/100));
+                var durum="";
+
+                if(ortalama>=50){
+                    durum="GEÇTİNİZ";
+                    
+                }
+                else{
+                    durum="KALDINIZ";
+                }
+                
+                var ogrenciBilgisiHTML ="TC Kimlik No: " + tcdiz[sorgu] + "<br>" +
+                            "Adı: " + addiz[sorgu] + "<br>" +
+                            "Soyadı: " + soyaddiz[sorgu] + "<br>" +
+                            "E-mail: " + emaildiz[sorgu] + "<br>" +
+                            "Telefon: " + telefondiz[sorgu] + "<br>" +
+                            "Bölüm: " + bolumdiz[sorgu] + "<br>" +
+                            "Doğum Yeri: " + dyeridiz[sorgu] + "<br>" +
+                            "Not Ortalaması: " + ortalama.toFixed(2) + "<br>" +
+                            "Durum: " + durum + "<br><br>";
+
+
+                ogrbilgii.innerHTML += ogrenciBilgisiHTML;
+
+               
+            }
+            else{
+                ogrbilgii.innerHTML="OGRENCİ BULUNAMADI";
+            }
+
+
+            
+        }
+
+        function ogrenciEkleee(){
+
+            var vizesss=parseInt(document.getElementById("vizee").value);
+            var finalsss=parseInt(document.getElementById("finall").value);
+            
+
+            if(vizesss+finalsss>200){
+                alert("Vize ya da Final notları 100 den büyük olamaz!!!");
+            }
+            
+            else{
+            
+                var tcs=document.getElementById("tcc").value;
+                var ads=document.getElementById("add").value;
+                var soyads=document.getElementById("soyadd").value;
+                var emails=document.getElementById("emaill").value;
+                var tells=document.getElementById("tell").value;
+                var bolums=document.getElementById("bolumm").value;
+                var dyeris=document.getElementById("dyerii").value;
+                var vizes=parseInt(document.getElementById("vizee").value);
+                var finals=parseInt(document.getElementById("finall").value);
+                
+
+            tcdiz.unshift(tcs);
+            addiz.unshift(ads);
+            soyaddiz.unshift(soyads);
+            emaildiz.unshift(emails);
+            telefondiz.unshift(tells);
+            bolumdiz.unshift(bolums);
+            dyeridiz.unshift(dyeris);
+            vizediz.unshift(vizes);
+            finaldiz.unshift(finals);
+
+            var yazdir="KAYIT OLUNDU <br>";
+            yeniogr.innerHTML+=yazdir;
+
+
+
+        }
+        }
+
+    </script>
+</head>
+<body>
+   <div class="ana">
+    <h1>WEB 2.DÖNEM PROJE</h1>
+    <h6>(ÖĞRENCİ BİLGİ VE GİRİŞ SİSTEMİ)</h6>
+    <h2>Tüm Öğrencileri Listele</h2>
+    <p id="ogrenciler"></p>
+    <button onclick="tumOgrencileriGetir()">Tüm Öğrencileri Listele</button>
+
+    <h2>TC İle Öğrenci Ara</h2>
+  <input type="text" id="tcKimlikNo" placeholder="TC Kimlik No">
+  <button onclick="ogrenciGetir()">Öğrenci Ara</button>
+  <p id="ogrbilgii"></p>
+
+
+  <h2>Yeni Öğrenci Ekle</h2>
+  <div class="inp">
+  <input type="text" id="tcc" placeholder="TC">
+  <input type="text" id="add" placeholder="AD">
+  <input type="text" id="soyadd" placeholder="SOYAD">
+  <input type="text" id="emaill" placeholder="E-MAİL">
+  <input type="text" id="tell" placeholder="TELEFON">
+  <input type="text" id="bolumm" placeholder="BÖLÜM">
+  <input type="text" id="dyerii" placeholder="D.YERİ">
+  <input type="number" id="vizee" placeholder="VİZE">
+  <input type="number" id="finall" placeholder="FİNAL">
+</div>
+
+ 
+
+
+  <button onclick="ogrenciEkleee()">Yeni Öğrenci Ekle</button>
+  <p id="yeniogr"></p>
+
+  <footer>
+    Yunus Emre TURHAN
+  </footer>
+
+</div>
+</body>
+</html>
